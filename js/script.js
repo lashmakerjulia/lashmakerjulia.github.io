@@ -23,16 +23,35 @@ document.addEventListener('DOMContentLoaded', () => {
   mobileNav?.querySelectorAll('a').forEach(a => a.addEventListener('click', closeNav));
 
   /* ---------- reveal on scroll ---------- */
-  const revealEls = document.querySelectorAll('.reveal, .reveal-stagger, .lash-divider');
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('in-view');
-        io.unobserve(entry.target);
+  const revealEls = Array.from(document.querySelectorAll('.reveal, .reveal-stagger, .lash-divider'));
+  const showIfVisible = (el) => {
+    const rect = el.getBoundingClientRect();
+    const vh = window.innerHeight || document.documentElement.clientHeight;
+    if (rect.top < vh * 0.98 && rect.bottom > 0) {
+      el.classList.add('in-view');
+      return true;
+    }
+    return false;
+  };
+
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.01 });
+
+    revealEls.forEach(el => {
+      if (!showIfVisible(el)) {
+        io.observe(el);
       }
     });
-  }, { threshold: 0.15 });
-  revealEls.forEach(el => io.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add('in-view'));
+  }
 
   /* ---------- lightbox gallery ---------- */
   const lightbox = document.getElementById('lightbox');
