@@ -18,8 +18,95 @@
 <link rel="apple-touch-icon" href="images/brand/logo-circle.png">
 <link rel="preload" as="image" href="images/hero/style-4-glitter.jpg" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Onest:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Onest:wght@400;500;600;700&display=swap"></noscript>
+<style>:root{--bg:#0b0308;--card:#170a12;--pink:#ff2f7e;--rose:#ffc2df;--gold:#d9a35c;--ink:#fbeef5;--mut:#cdb0bd;--bd:rgba(255,255,255,.09);--ease:cubic-bezier(.22,.68,0,1)}
+*{box-sizing:border-box;margin:0}html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{background:var(--bg);color:var(--ink);font:400 17px/1.65 Onest,system-ui,sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}a{color:inherit;text-decoration:none}ul{padding:0;list-style:none}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+h1,h2,h3,em{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500}
+h2{font-size:clamp(36px,5vw,60px);line-height:1.05;margin-bottom:14px}
+.wrap{width:min(1180px,100% - 40px);margin-inline:auto}.sec{padding:clamp(70px,10vw,130px) 0}
+.sub,.note{color:var(--mut)}.sub{margin-bottom:44px}.note{font-size:14px;margin-top:14px}
+.glow{position:fixed;inset:0;pointer-events:none;z-index:1;background:radial-gradient(420px circle at var(--x,70%) var(--y,20%),rgba(255,47,126,.13),transparent 70%)}
+/* header */
+.hd{position:fixed;inset:0 0 auto;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:12px max(20px,calc(50% - 590px));transition:.4s var(--ease)}
+.hd.sc{background:rgba(11,3,8,.78);backdrop-filter:blur(16px);border-bottom:1px solid var(--bd)}
+.brand img{width:56px;height:56px;border-radius:50%;box-shadow:0 0 28px rgba(255,47,126,.4)}
+nav{display:flex;gap:30px;font-size:15px;font-weight:500}nav a{color:var(--mut);position:relative;transition:color .3s}
+nav a::after{content:'';position:absolute;left:0;right:100%;bottom:-4px;height:1px;background:var(--pink);transition:right .4s var(--ease)}
+nav a:hover{color:#fff}nav a:hover::after{right:0}
+.burger{display:none;background:none;border:1px solid var(--bd);border-radius:50%;width:44px;height:44px;cursor:pointer;position:relative}
+.burger i{position:absolute;left:13px;right:13px;height:1.5px;background:#fff;transition:.3s}.burger i:first-child{top:18px}.burger i:last-child{top:25px}
+.burger[aria-expanded=true] i:first-child{top:21px;transform:rotate(45deg)}.burger[aria-expanded=true] i:last-child{top:21px;transform:rotate(-45deg)}
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:15px 30px;border-radius:99px;font-weight:600;font-size:15px;background:linear-gradient(135deg,#ff6fa8,var(--pink) 55%,#c81361);color:#fff;box-shadow:0 10px 34px -8px rgba(255,47,126,.7);transition:transform .35s var(--ease),box-shadow .35s;position:relative;overflow:hidden;will-change:transform}
+.btn:hover{box-shadow:0 16px 44px -6px rgba(255,47,126,.9)}
+.shine::after{content:'';position:absolute;top:0;bottom:0;width:40%;left:-60%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-20deg);animation:sh 4.5s 1.5s infinite}
+@keyframes sh{to{left:130%}}
+.btn.ghost{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.2);box-shadow:none;backdrop-filter:blur(8px)}.btn.ghost:hover{border-color:var(--pink);background:rgba(255,47,126,.12)}
+/* hero */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;padding:120px 0 56px;isolation:isolate;overflow:hidden}
+.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;z-index:-2;animation:zoom 22s ease-out forwards}
+@keyframes zoom{from{transform:scale(1.12)}to{transform:scale(1)}}
+.hero::after{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(100deg,rgba(11,3,8,.94) 15%,rgba(11,3,8,.55) 55%,rgba(11,3,8,.85)),linear-gradient(0deg,var(--bg),transparent 35%)}
+.curve{position:absolute;left:0;bottom:12%;width:100%;height:auto;z-index:-1;fill:none;stroke:var(--gold);stroke-width:1.5;opacity:.55}
+.curve path{stroke-dasharray:1;stroke-dashoffset:1;animation:draw 3.2s .6s var(--ease) forwards}@keyframes draw{to{stroke-dashoffset:0}}
+.hero-in{position:relative;z-index:2}.hero-in>*{max-width:560px}.hero-in>h1{max-width:960px}.hero-in>.lede{max-width:520px}
+.eyebrow{color:var(--gold);letter-spacing:.2em;text-transform:uppercase;font-size:13px;font-weight:600;margin-bottom:20px;animation:up .8s var(--ease) both}
+h1{font-size:clamp(38px,5.6vw,80px);line-height:1.04;letter-spacing:-.015em}h1 .ln{display:block;overflow:hidden;padding-bottom:.08em}
+h1 .ln>span{display:block;animation:mask 1.1s var(--ease) both}h1 .ln:nth-child(2)>span{animation-delay:.18s}
+@keyframes mask{from{transform:translateY(105%)}}@keyframes up{from{opacity:0;transform:translateY(22px)}}
+h1 em{font-style:italic;background:linear-gradient(95deg,var(--pink),#ff9bb8 55%,var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lede{color:var(--mut);margin:22px 0 30px;font-size:18px;animation:up .9s .45s var(--ease) both}
+.acts{display:flex;flex-wrap:wrap;gap:14px;animation:up .9s .6s var(--ease) both}
+.stats{display:flex;gap:clamp(24px,5vw,56px);margin-top:44px;animation:up .9s .8s var(--ease) both}
+.stats dt{font:500 clamp(30px,3.6vw,44px)/1 'Cormorant Garamond',serif;color:var(--rose)}.stats dd{font-size:13px;color:var(--mut);margin-top:6px}
+/* reveal: shift only, text always visible for crawlers */
+.js .reveal{opacity:.001;transform:translateY(34px);transition:opacity .9s var(--ease),transform .9s var(--ease)}.js .reveal.in{opacity:1;transform:none}
+/* about */
+.about{display:grid;grid-template-columns:5fr 6fr;gap:clamp(30px,6vw,90px);align-items:center}
+.about figure{position:relative}.about img{border-radius:240px 240px 24px 24px;aspect-ratio:4/5;object-fit:cover;width:100%;box-shadow:0 30px 80px -20px rgba(255,47,126,.4);border:1px solid var(--bd)}
+figcaption{position:absolute;right:-12px;bottom:28px;background:var(--card);border:1px solid rgba(217,163,92,.4);border-radius:18px;padding:14px 18px;max-width:180px;font-size:13px;line-height:1.4;color:var(--mut)}
+figcaption b{display:block;font:500 44px/1 'Cormorant Garamond',serif;color:var(--gold)}
+.about p{color:var(--mut);margin-bottom:26px}.pts{display:grid;gap:14px;margin-bottom:34px}
+.pts li{padding-left:20px;border-left:1px solid var(--pink);color:var(--mut);font-size:15px}.pts b{display:block;color:var(--ink);font-size:16px}
+/* price menu */
+.menu li{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:24px;padding:26px 18px;border-top:1px solid var(--bd);position:relative;transition:background .4s,padding .4s var(--ease)}
+.menu li:last-child{border-bottom:1px solid var(--bd)}.menu li:hover{background:linear-gradient(90deg,rgba(255,47,126,.12),transparent);padding-left:30px}
+.menu h3{font-size:clamp(28px,3.4vw,40px);line-height:1.1;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.menu h3 em{font:600 11px Onest;letter-spacing:.14em;text-transform:uppercase;background:var(--pink);padding:4px 10px;border-radius:99px;font-style:normal}
+.menu p{color:var(--mut);font-size:15px;max-width:520px}.menu b{font:500 clamp(34px,4vw,50px)/1 'Cormorant Garamond',serif;color:var(--rose)}.menu small{font:400 14px Onest;color:var(--mut)}
+.go{font-size:14px;font-weight:600;color:var(--gold);border:1px solid rgba(217,163,92,.45);padding:10px 20px;border-radius:99px;transition:.3s}.go:hover{background:var(--gold);color:var(--bg)}
+.extra{display:flex;flex-wrap:wrap;gap:12px 30px;margin-top:30px;color:var(--mut);font-size:15px}.extra b{color:var(--ink);margin-left:6px}
+/* gallery */
+.grid{columns:4 220px;column-gap:14px}.tile{display:block;width:100%;margin-bottom:14px;padding:0;border:0;border-radius:20px;overflow:hidden;position:relative;cursor:zoom-in;aspect-ratio:4/5;background:var(--card);break-inside:avoid}
+.tile.tall{aspect-ratio:4/6}.tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.tile img+img{opacity:0;animation:fade var(--d) infinite}@keyframes fade{0%,40%{opacity:0}50%,90%{opacity:1}100%{opacity:0}}
+.tile:hover img{transform:scale(1.07)}.tile span{position:absolute;left:12px;bottom:12px;padding:6px 14px;border-radius:99px;background:rgba(11,3,8,.7);backdrop-filter:blur(8px);font-size:13px;color:#fff;border:1px solid var(--bd)}
+.more{text-align:center;margin-top:36px}
+/* why / faq */
+.why{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,4vw,56px);margin-top:44px}
+.why article{border-top:1px solid var(--gold);padding-top:22px}.why h3{font-size:32px;margin-bottom:10px}.why p{color:var(--mut);font-size:16px}
+.faq{max-width:860px}details{border-bottom:1px solid var(--bd);padding:22px 0}summary{cursor:pointer;font:500 clamp(22px,2.6vw,28px)/1.25 'Cormorant Garamond',serif;list-style:none;display:flex;justify-content:space-between;gap:20px}
+summary::-webkit-details-marker{display:none}summary::after{content:'+';color:var(--pink);font-size:30px;line-height:1;transition:transform .4s var(--ease)}details[open] summary::after{transform:rotate(135deg)}
+details p{color:var(--mut);margin-top:12px;animation:up .5s var(--ease)}
+/* cta */
+.cta{text-align:center;padding:clamp(44px,7vw,90px) 24px;border-radius:36px;border:1px solid var(--bd);position:relative;overflow:hidden;background:radial-gradient(ellipse at 50% 0,rgba(255,47,126,.28),transparent 65%),var(--card)}
+.cta p{color:var(--mut);max-width:520px;margin:0 auto 38px}.ccs{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;text-align:left}
+.cc{display:flex;align-items:center;gap:14px;padding:18px;border-radius:20px;border:1px solid var(--bd);background:rgba(255,255,255,.04);transition:border-color .3s,background .3s,transform .35s var(--ease)}.cc:hover{border-color:var(--pink);background:rgba(255,47,126,.12)}
+.cc span{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#ff6fa8,#c81361)}.cc svg{width:22px}.cc b{display:block}.cc div{font-size:14px;color:var(--mut)}
+footer{padding:50px 0 30px;border-top:1px solid var(--bd);margin-top:90px}.ft{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-bottom:24px}.ft img{border-radius:50%}.ft p{flex:1;color:var(--mut);font-size:15px;min-width:220px}.ft a:hover{color:var(--pink)}
+.soc{display:flex;gap:10px}.soc a{width:42px;height:42px;border:1px solid var(--bd);border-radius:50%;display:grid;place-items:center;transition:.3s}.soc a:hover{background:var(--pink);border-color:var(--pink)}.soc svg{width:19px}small{color:var(--mut);opacity:.7}
+.fab{position:fixed;right:20px;bottom:22px;z-index:40;width:58px;height:58px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#ff6fa8,#c81361);box-shadow:0 10px 30px rgba(255,47,126,.6);animation:pulse 2.6s infinite}.fab svg{width:25px}
+@keyframes pulse{50%{box-shadow:0 0 0 14px rgba(255,47,126,0)}0%{box-shadow:0 0 0 0 rgba(255,47,126,.5)}}
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:100;background:rgba(5,1,4,.94);backdrop-filter:blur(10px);display:grid;place-items:center}.lb[hidden]{display:none}.lb img{max-height:88vh;max-width:88vw;border-radius:16px}
+.lb button{position:absolute;background:rgba(255,255,255,.08);border:1px solid var(--bd);color:#fff;width:50px;height:50px;border-radius:50%;font-size:24px;cursor:pointer}.lb button:hover{background:var(--pink)}#lx{top:20px;right:20px}#lp{left:16px}#ln{right:16px}
+@media(max-width:900px){nav{position:fixed;inset:0;flex-direction:column;justify-content:center;align-items:center;gap:26px;font-size:24px;background:rgba(11,3,8,.97);opacity:0;visibility:hidden;transition:.4s}nav.open{opacity:1;visibility:visible}.burger{display:block;z-index:60}.hd .btn{display:none}
+.about,.why{grid-template-columns:1fr}.about figure{max-width:420px}figcaption{right:8px}.menu li{grid-template-columns:1fr auto}.go{display:none}.stats{gap:22px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.js .reveal{opacity:1;transform:none}}
+</style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BeautySalon", "@id": "https://lashmakerjulia.github.io/#salon", "name": "Юлія Lashmaker", "description": "Нарощення вій у Рівному: класика, 2D–5D, мокрий ефект. Досвід 7+ років.", "url": "https://lashmakerjulia.github.io/", "image": "https://lashmakerjulia.github.io/images/about/julia.jpg", "logo": "https://lashmakerjulia.github.io/images/brand/logo-circle.png", "telephone": "+380975141625", "priceRange": "550–750 UAH", "address": {"@type": "PostalAddress", "addressLocality": "Рівне", "addressRegion": "Рівненська область", "addressCountry": "UA"}, "areaServed": {"@type": "City", "name": "Рівне"}, "sameAs": ["https://t.me/yulka981025", "https://www.instagram.com/lashmaker_julia?igsh=aXppcG93MXJpdjR1&igsi=aXppcG93MXJpdjR1"], "hasOfferCatalog": {"@type": "OfferCatalog", "name": "Нарощення вій", "itemListElement": [{"@type": "Offer", "priceCurrency": "UAH", "price": "550", "itemOffered": {"@type": "Service", "name": "Нарощення вій Класика", "areaServed": "Рівне"}}, {"@type": "Offer", "priceCurrency": "UAH", "price": "600", "itemOffered": {"@type": "Service", "name": "Нарощення вій 2D", "areaServed": "Рівне"}}, {"@type": "Offer", "priceCurrency": "UAH", "price": "650", "itemOffered": {"@type": "Service", "name": "Нарощення вій 3D", "areaServed": "Рівне"}}, {"@type": "Offer", "priceCurrency": "UAH", "price": "700", "itemOffered": {"@type": "Service", "name": "Нарощення вій 4D", "areaServed": "Рівне"}}, {"@type": "Offer", "priceCurrency": "UAH", "price": "750", "itemOffered": {"@type": "Service", "name": "Нарощення вій 5D", "areaServed": "Рівне"}}, {"@type": "Offer", "priceCurrency": "UAH", "price": "700", "itemOffered": {"@type": "Service", "name": "Нарощення вій Мокрий ефект", "areaServed": "Рівне"}}]}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Скільки коштує нарощення вій у Рівному?", "acceptedAnswer": {"@type": "Answer", "text": "У Юлії класика коштує 550 грн, 2D — 600 грн, 3D — 650 грн, 4D та мокрий ефект — по 700 грн, 5D — 750 грн. Промінчики — +50 грн. Остаточну вартість майстер підтверджує перед записом."}}, {"@type": "Question", "name": "Чим відрізняються 2D, 3D, 4D і 5D?", "acceptedAnswer": {"@type": "Answer", "text": "Цифра — це кількість тонких вій у пучку на одну натуральну. 2D дає легкий об'єм, 3D — збалансований, 4D — насичений, 5D — максимально густий ефект. Класика — одна вія на одну натуральну."}}, {"@type": "Question", "name": "Скільки коштує зняття вій?", "acceptedAnswer": {"@type": "Answer", "text": "Зняття вій Юлії — безкоштовно при повторному нарощенні. Зняття вій іншого майстра — 100 грн."}}, {"@type": "Question", "name": "Як записатися на нарощення вій у Рівному?", "acceptedAnswer": {"@type": "Answer", "text": "Напишіть Юлії в Telegram, Instagram або Viber чи зателефонуйте за номером +380 97 514 16 25 — вона підбере зручний час."}}]}</script>
 </head>
 <body>
