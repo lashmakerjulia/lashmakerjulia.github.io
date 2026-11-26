@@ -1,87 +1,98 @@
-:root{--bg:#0b0308;--card:#170a12;--pink:#ff2f7e;--rose:#ffc2df;--gold:#d9a35c;--ink:#fbeef5;--mut:#cdb0bd;--bd:rgba(255,255,255,.09);--ease:cubic-bezier(.22,.68,0,1)}
-*{box-sizing:border-box;margin:0}html{scroll-behavior:smooth;scroll-padding-top:90px}
-body{background:var(--bg);color:var(--ink);font:400 17px/1.65 Onest,system-ui,sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
-img{max-width:100%;display:block}a{color:inherit;text-decoration:none}ul{padding:0;list-style:none}
-:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
-h1,h2,h3,em{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500}
-h2{font-size:clamp(36px,5vw,60px);line-height:1.05;margin-bottom:14px}
-.wrap{width:min(1180px,100% - 40px);margin-inline:auto}.sec{padding:clamp(70px,10vw,130px) 0}
-.sub,.note{color:var(--mut)}.sub{margin-bottom:44px}.note{font-size:14px;margin-top:14px}
-.glow{position:fixed;inset:0;pointer-events:none;z-index:1;background:radial-gradient(420px circle at var(--x,70%) var(--y,20%),rgba(255,47,126,.13),transparent 70%)}
-/* header */
-.hd{position:fixed;inset:0 0 auto;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:12px max(20px,calc(50% - 590px));transition:.4s var(--ease)}
-.hd.sc{background:rgba(11,3,8,.78);backdrop-filter:blur(16px);border-bottom:1px solid var(--bd)}
-.brand img{width:56px;height:56px;border-radius:50%;box-shadow:0 0 28px rgba(255,47,126,.4)}
-nav{display:flex;gap:30px;font-size:15px;font-weight:500}nav a{color:var(--mut);position:relative;transition:color .3s}
-nav a::after{content:'';position:absolute;left:0;right:100%;bottom:-4px;height:1px;background:var(--pink);transition:right .4s var(--ease)}
-nav a:hover{color:#fff}nav a:hover::after{right:0}
-.burger{display:none;background:none;border:1px solid var(--bd);border-radius:50%;width:44px;height:44px;cursor:pointer;position:relative}
-.burger i{position:absolute;left:13px;right:13px;height:1.5px;background:#fff;transition:.3s}.burger i:first-child{top:18px}.burger i:last-child{top:25px}
-.burger[aria-expanded=true] i:first-child{top:21px;transform:rotate(45deg)}.burger[aria-expanded=true] i:last-child{top:21px;transform:rotate(-45deg)}
-/* buttons */
-.btn{display:inline-flex;align-items:center;justify-content:center;padding:15px 30px;border-radius:99px;font-weight:600;font-size:15px;background:linear-gradient(135deg,#ff6fa8,var(--pink) 55%,#c81361);color:#fff;box-shadow:0 10px 34px -8px rgba(255,47,126,.7);transition:transform .35s var(--ease),box-shadow .35s;position:relative;overflow:hidden;will-change:transform}
-.btn:hover{box-shadow:0 16px 44px -6px rgba(255,47,126,.9)}
-.shine::after{content:'';position:absolute;top:0;bottom:0;width:40%;left:-60%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-20deg);animation:sh 4.5s 1.5s infinite}
-@keyframes sh{to{left:130%}}
-.btn.ghost{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.2);box-shadow:none;backdrop-filter:blur(8px)}.btn.ghost:hover{border-color:var(--pink);background:rgba(255,47,126,.12)}
-/* hero */
-.hero{position:relative;min-height:100svh;display:flex;align-items:center;padding:130px 0 70px;isolation:isolate;overflow:hidden}
-.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;z-index:-2;animation:zoom 22s ease-out forwards}
-@keyframes zoom{from{transform:scale(1.12)}to{transform:scale(1)}}
-.hero::after{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(100deg,rgba(11,3,8,.94) 15%,rgba(11,3,8,.55) 55%,rgba(11,3,8,.85)),linear-gradient(0deg,var(--bg),transparent 35%)}
-.curve{position:absolute;left:0;bottom:12%;width:100%;height:auto;z-index:-1;fill:none;stroke:var(--gold);stroke-width:1.5;opacity:.55}
-.curve path{stroke-dasharray:1;stroke-dashoffset:1;animation:draw 3.2s .6s var(--ease) forwards}@keyframes draw{to{stroke-dashoffset:0}}
-.hero-in{position:relative;z-index:2}.hero-in>*{max-width:760px}
-.eyebrow{color:var(--gold);letter-spacing:.2em;text-transform:uppercase;font-size:13px;font-weight:600;margin-bottom:20px;animation:up .8s var(--ease) both}
-h1{font-size:clamp(46px,7.4vw,98px);line-height:.98;letter-spacing:-.01em}h1 .ln{display:block;overflow:hidden;padding-bottom:.08em}
-h1 .ln>span{display:block;animation:mask 1.1s var(--ease) both}h1 .ln:nth-child(2)>span{animation-delay:.18s}
-@keyframes mask{from{transform:translateY(105%)}}@keyframes up{from{opacity:0;transform:translateY(22px)}}
-h1 em{font-style:italic;background:linear-gradient(95deg,var(--pink),#ff9bb8 55%,var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
-.lede{color:var(--mut);margin:26px 0 34px;max-width:540px;font-size:19px;animation:up .9s .45s var(--ease) both}
-.acts{display:flex;flex-wrap:wrap;gap:14px;animation:up .9s .6s var(--ease) both}
-.stats{display:flex;gap:clamp(24px,5vw,56px);margin-top:54px;animation:up .9s .8s var(--ease) both}
-.stats dt{font:500 clamp(30px,3.6vw,44px)/1 'Cormorant Garamond',serif;color:var(--rose)}.stats dd{font-size:13px;color:var(--mut);margin-top:6px}
-/* reveal: shift only, text always visible for crawlers */
-.js .reveal{opacity:.001;transform:translateY(34px);transition:opacity .9s var(--ease),transform .9s var(--ease)}.js .reveal.in{opacity:1;transform:none}
-/* about */
-.about{display:grid;grid-template-columns:5fr 6fr;gap:clamp(30px,6vw,90px);align-items:center}
-.about figure{position:relative}.about img{border-radius:240px 240px 24px 24px;aspect-ratio:4/5;object-fit:cover;width:100%;box-shadow:0 30px 80px -20px rgba(255,47,126,.4);border:1px solid var(--bd)}
-figcaption{position:absolute;right:-12px;bottom:28px;background:var(--card);border:1px solid rgba(217,163,92,.4);border-radius:18px;padding:14px 18px;max-width:180px;font-size:13px;line-height:1.4;color:var(--mut)}
-figcaption b{display:block;font:500 44px/1 'Cormorant Garamond',serif;color:var(--gold)}
-.about p{color:var(--mut);margin-bottom:26px}.pts{display:grid;gap:14px;margin-bottom:34px}
-.pts li{padding-left:20px;border-left:1px solid var(--pink);color:var(--mut);font-size:15px}.pts b{display:block;color:var(--ink);font-size:16px}
-/* price menu */
-.menu li{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:24px;padding:26px 18px;border-top:1px solid var(--bd);position:relative;transition:background .4s,padding .4s var(--ease)}
-.menu li:last-child{border-bottom:1px solid var(--bd)}.menu li:hover{background:linear-gradient(90deg,rgba(255,47,126,.12),transparent);padding-left:30px}
-.menu h3{font-size:clamp(28px,3.4vw,40px);line-height:1.1;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-.menu h3 em{font:600 11px Onest;letter-spacing:.14em;text-transform:uppercase;background:var(--pink);padding:4px 10px;border-radius:99px;font-style:normal}
-.menu p{color:var(--mut);font-size:15px;max-width:520px}.menu b{font:500 clamp(34px,4vw,50px)/1 'Cormorant Garamond',serif;color:var(--rose)}.menu small{font:400 14px Onest;color:var(--mut)}
-.go{font-size:14px;font-weight:600;color:var(--gold);border:1px solid rgba(217,163,92,.45);padding:10px 20px;border-radius:99px;transition:.3s}.go:hover{background:var(--gold);color:var(--bg)}
-.extra{display:flex;flex-wrap:wrap;gap:12px 30px;margin-top:30px;color:var(--mut);font-size:15px}.extra b{color:var(--ink);margin-left:6px}
-/* gallery */
-.grid{columns:4 220px;column-gap:14px}.tile{display:block;width:100%;margin-bottom:14px;padding:0;border:0;border-radius:20px;overflow:hidden;position:relative;cursor:zoom-in;aspect-ratio:4/5;background:var(--card);break-inside:avoid}
-.tile.tall{aspect-ratio:4/6}.tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
-.tile img+img{opacity:0;animation:fade var(--d) infinite}@keyframes fade{0%,40%{opacity:0}50%,90%{opacity:1}100%{opacity:0}}
-.tile:hover img{transform:scale(1.07)}.tile span{position:absolute;left:12px;bottom:12px;padding:6px 14px;border-radius:99px;background:rgba(11,3,8,.7);backdrop-filter:blur(8px);font-size:13px;color:#fff;border:1px solid var(--bd)}
-.more{text-align:center;margin-top:36px}
-/* why / faq */
-.why{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,4vw,56px);margin-top:44px}
-.why article{border-top:1px solid var(--gold);padding-top:22px}.why h3{font-size:32px;margin-bottom:10px}.why p{color:var(--mut);font-size:16px}
-.faq{max-width:860px}details{border-bottom:1px solid var(--bd);padding:22px 0}summary{cursor:pointer;font:500 clamp(22px,2.6vw,28px)/1.25 'Cormorant Garamond',serif;list-style:none;display:flex;justify-content:space-between;gap:20px}
-summary::-webkit-details-marker{display:none}summary::after{content:'+';color:var(--pink);font-size:30px;line-height:1;transition:transform .4s var(--ease)}details[open] summary::after{transform:rotate(135deg)}
-details p{color:var(--mut);margin-top:12px;animation:up .5s var(--ease)}
-/* cta */
-.cta{text-align:center;padding:clamp(44px,7vw,90px) 24px;border-radius:36px;border:1px solid var(--bd);position:relative;overflow:hidden;background:radial-gradient(ellipse at 50% 0,rgba(255,47,126,.28),transparent 65%),var(--card)}
-.cta p{color:var(--mut);max-width:520px;margin:0 auto 38px}.ccs{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;text-align:left}
-.cc{display:flex;align-items:center;gap:14px;padding:18px;border-radius:20px;border:1px solid var(--bd);background:rgba(255,255,255,.04);transition:border-color .3s,background .3s,transform .35s var(--ease)}.cc:hover{border-color:var(--pink);background:rgba(255,47,126,.12)}
-.cc span{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#ff6fa8,#c81361)}.cc svg{width:22px}.cc b{display:block}.cc div{font-size:14px;color:var(--mut)}
-footer{padding:50px 0 30px;border-top:1px solid var(--bd);margin-top:90px}.ft{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-bottom:24px}.ft img{border-radius:50%}.ft p{flex:1;color:var(--mut);font-size:15px;min-width:220px}.ft a:hover{color:var(--pink)}
-.soc{display:flex;gap:10px}.soc a{width:42px;height:42px;border:1px solid var(--bd);border-radius:50%;display:grid;place-items:center;transition:.3s}.soc a:hover{background:var(--pink);border-color:var(--pink)}.soc svg{width:19px}small{color:var(--mut);opacity:.7}
-.fab{position:fixed;right:20px;bottom:22px;z-index:40;width:58px;height:58px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#ff6fa8,#c81361);box-shadow:0 10px 30px rgba(255,47,126,.6);animation:pulse 2.6s infinite}.fab svg{width:25px}
-@keyframes pulse{50%{box-shadow:0 0 0 14px rgba(255,47,126,0)}0%{box-shadow:0 0 0 0 rgba(255,47,126,.5)}}
-/* lightbox */
-.lb{position:fixed;inset:0;z-index:100;background:rgba(5,1,4,.94);backdrop-filter:blur(10px);display:grid;place-items:center}.lb[hidden]{display:none}.lb img{max-height:88vh;max-width:88vw;border-radius:16px}
-.lb button{position:absolute;background:rgba(255,255,255,.08);border:1px solid var(--bd);color:#fff;width:50px;height:50px;border-radius:50%;font-size:24px;cursor:pointer}.lb button:hover{background:var(--pink)}#lx{top:20px;right:20px}#lp{left:16px}#ln{right:16px}
-@media(max-width:900px){nav{position:fixed;inset:0;flex-direction:column;justify-content:center;align-items:center;gap:26px;font-size:24px;background:rgba(11,3,8,.97);opacity:0;visibility:hidden;transition:.4s}nav.open{opacity:1;visibility:visible}.burger{display:block;z-index:60}.hd .btn{display:none}
-.about,.why{grid-template-columns:1fr}.about figure{max-width:420px}figcaption{right:8px}.menu li{grid-template-columns:1fr auto}.go{display:none}.stats{gap:22px}}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.js .reveal{opacity:1;transform:none}}
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Нарощення вій у Рівному — Юлія Lashmaker | від 550 грн</title>
+<meta name="description" content="Нарощення вій у Рівному від Юлії: класика, 2D, 3D, 4D, 5D, мокрий ефект. Досвід 7+ років, індивідуальний підхід, ціни від 550 грн. Запис у Telegram, Viber, Instagram.">
+<meta name="theme-color" content="#0b0308">
+<link rel="canonical" href="https://lashmakerjulia.github.io/">
+<link rel="alternate" hreflang="uk" href="https://lashmakerjulia.github.io/">
+<meta property="og:type" content="website"><meta property="og:locale" content="uk_UA"><meta property="og:site_name" content="Юлія Lashmaker">
+<meta property="og:url" content="https://lashmakerjulia.github.io/">
+<meta property="og:title" content="Нарощення вій у Рівному — Юлія Lashmaker">
+<meta property="og:description" content="Класика, 2D–5D та мокрий ефект. Досвід 7+ років. Ціни від 550 грн.">
+<meta property="og:image" content="https://lashmakerjulia.github.io/images/about/julia.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="images/brand/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="images/brand/logo-circle.png">
+<link rel="preload" as="image" href="images/hero/style-4-glitter.jpg" fetchpriority="high">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BeautySalon", "@id": "https://lashmakerjulia.github.io/#salon", "name": "Юлія Lashmaker", "description": "Нарощення вій у Рівному: класика, 2D–5D, мокрий ефект. Досвід 7+ років.", "url": "https://lashmakerjulia.github.io/", "image": "https://lashmakerjulia.github.io/images/about/julia.jpg", "logo": "https://lashmakerjulia.github.io/images/brand/logo-circle.png", "telephone": "+380975141625", "priceRange": "550–750 UAH", "address": {"@type": "PostalAddress", "addressLocality": "Рівне", "addressRegion": "Рівненська область", "addressCountry": "UA"}, "areaServed": {"@type": "City", "name": "Рівне"}, "sameAs": ["https://t.me/yulka981025", "https://www.instagram.com/lashmaker_julia?igsh=aXppcG93MXJpdjR1&igsi=aXppcG93MXJpdjR1"], "hasOfferCatalog": {"@type": "OfferCatalog", "name": "Нарощення вій", "itemListElement": [{"@type": "Offer", "priceCurrency": "UAH", "price": "550", "itemOffered": {"@type": "Service", "name": "Нарощення вій Класика", "areaServed": "Рівне"}}, {"@type": "Offer", "priceCurrency": "UAH", "price": "600", "itemOffered": {"@type": "Service", "name": "Нарощення вій 2D", "areaServed": "Рівне"}}, {"@type": "Offer", "priceCurrency": "UAH", "price": "650", "itemOffered": {"@type": "Service", "name": "Нарощення вій 3D", "areaServed": "Рівне"}}, {"@type": "Offer", "priceCurrency": "UAH", "price": "700", "itemOffered": {"@type": "Service", "name": "Нарощення вій 4D", "areaServed": "Рівне"}}, {"@type": "Offer", "priceCurrency": "UAH", "price": "750", "itemOffered": {"@type": "Service", "name": "Нарощення вій 5D", "areaServed": "Рівне"}}, {"@type": "Offer", "priceCurrency": "UAH", "price": "700", "itemOffered": {"@type": "Service", "name": "Нарощення вій Мокрий ефект", "areaServed": "Рівне"}}]}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Скільки коштує нарощення вій у Рівному?", "acceptedAnswer": {"@type": "Answer", "text": "У Юлії класика коштує 550 грн, 2D — 600 грн, 3D — 650 грн, 4D та мокрий ефект — по 700 грн, 5D — 750 грн. Промінчики — +50 грн. Остаточну вартість майстер підтверджує перед записом."}}, {"@type": "Question", "name": "Чим відрізняються 2D, 3D, 4D і 5D?", "acceptedAnswer": {"@type": "Answer", "text": "Цифра — це кількість тонких вій у пучку на одну натуральну. 2D дає легкий об'єм, 3D — збалансований, 4D — насичений, 5D — максимально густий ефект. Класика — одна вія на одну натуральну."}}, {"@type": "Question", "name": "Скільки коштує зняття вій?", "acceptedAnswer": {"@type": "Answer", "text": "Зняття вій Юлії — безкоштовно при повторному нарощенні. Зняття вій іншого майстра — 100 грн."}}, {"@type": "Question", "name": "Як записатися на нарощення вій у Рівному?", "acceptedAnswer": {"@type": "Answer", "text": "Напишіть Юлії в Telegram, Instagram або Viber чи зателефонуйте за номером +380 97 514 16 25 — вона підбере зручний час."}}]}</script>
+</head>
+<body>
+<div class="glow" aria-hidden="true"></div>
+<header class="hd">
+<a href="#top" class="brand" aria-label="Юлія Lashmaker — на початок"><img src="images/brand/logo-circle.png" alt="Логотип Lashmaker Julia" width="56" height="56"></a>
+<nav id="nav" aria-label="Головне меню"><a href="#about">Про мене</a><a href="#services">Ціни</a><a href="#catalog">Роботи</a><a href="#why">Переваги</a><a href="#faq">Питання</a><a href="#contacts">Контакти</a></nav>
+<a class="btn shine magnetic" href="#contacts">Записатися</a>
+<button class="burger" aria-label="Меню" aria-expanded="false" aria-controls="nav"><i></i><i></i></button>
+</header>
+<main id="top">
+<section class="hero">
+<img class="hero-img" src="images/hero/style-4-glitter.jpg" alt="" width="1600" height="1000" fetchpriority="high">
+<svg class="curve" viewBox="0 0 1200 300" aria-hidden="true"><path pathLength="1" d="M0 230C220 60 420 40 640 120S1000 250 1200 60"/></svg>
+<div class="wrap hero-in">
+<p class="eyebrow">Lashmaker · Рівне</p>
+<h1><span class="ln"><span>Нарощення вій у Рівному</span></span><span class="ln"><span><em>погляд, що запам'ятовується</em></span></span></h1>
+<p class="lede">Індивідуальний підхід до кожної деталі — від консультації до фінального штриха. Класика, об'єм 2D–5D та мокрий ефект.</p>
+<div class="acts"><a class="btn shine magnetic" href="#contacts">Записатись на нарощення</a><a class="btn ghost magnetic" href="#catalog">Переглянути роботи</a></div>
+<dl class="stats"><div><dt>7+</dt><dd>років досвіду</dd></div><div><dt>від 550</dt><dd>грн, класика</dd></div><div><dt>1:1</dt><dd>індивідуальний підхід</dd></div></dl>
+</div>
+</section>
+
+<section class="sec wrap about" id="about">
+<figure class="reveal"><img src="images/about/julia.jpg" alt="Юлія — майстер нарощення вій у Рівному" width="600" height="750" loading="lazy"><figcaption><b>7</b> років у нарощенні та навчанні</figcaption></figure>
+<div class="reveal">
+<h2>Привіт, я Юлія</h2>
+<p>Роблю нарощення вій у Рівному понад 7 років і працювала із сотнями клієнток — від першого нарощення до щомісячного догляду. Для мене важливо не просто «наростити», а підібрати форму, вигин і довжину під конкретні очі, щоб погляд виглядав природно і доглянуто.</p>
+<ul class="pts"><li><b>Індивідуальний дизайн</b>Форма й об'єм — під форму очей та ваші побажання.</li><li><b>Преміум матеріали</b>Якісні вії та клеї, безпечні для очей.</li><li><b>Стерильність</b>Інструменти й поверхні обробляються перед кожною клієнткою.</li><li><b>Безкоштовне зняття</b>Зняття власних вій — безкоштовно при повторному нарощенні.</li></ul>
+<a class="btn shine magnetic" href="#contacts">Записатись до Юлії</a>
+</div>
+</section>
+
+<section class="sec wrap" id="services">
+<h2 class="reveal">Ціни на нарощення вій</h2>
+<p class="sub reveal">Оберіть об'єм: від природної класики до пишного 5D.</p>
+<ul class="menu"><li class="reveal"><div><h3>Класика</h3><p>По одній вії на кожну натуральну — максимально природний ефект.</p></div><b>550<small> грн</small></b><a href="#contacts" class="go" aria-label="Записатись на Класика">Записатись</a></li><li class="reveal"><div><h3>2D</h3><p>Легкий об'єм: по дві вії у пучку, ефект густіших власних вій.</p></div><b>600<small> грн</small></b><a href="#contacts" class="go" aria-label="Записатись на 2D">Записатись</a></li><li class="reveal hot"><div><h3>3D<em>Популярне</em></h3><p>Збалансований об'єм — виразний, але доглянутий погляд щодня.</p></div><b>650<small> грн</small></b><a href="#contacts" class="go" aria-label="Записатись на 3D">Записатись</a></li><li class="reveal"><div><h3>4D</h3><p>Насичений об'єм для тих, хто любить виразний макіяж очей.</p></div><b>700<small> грн</small></b><a href="#contacts" class="go" aria-label="Записатись на 4D">Записатись</a></li><li class="reveal"><div><h3>5D</h3><p>Максимальна густота та драматичний ефект «голлівудського» погляду.</p></div><b>750<small> грн</small></b><a href="#contacts" class="go" aria-label="Записатись на 5D">Записатись</a></li><li class="reveal"><div><h3>Мокрий ефект</h3><p>Глянцевий, «вологий» ефект вій без зайвої пишноти.</p></div><b>700<small> грн</small></b><a href="#contacts" class="go" aria-label="Записатись на Мокрий ефект">Записатись</a></li></ul>
+<div class="extra reveal"><span>Промінчики <b>+50 грн</b></span><span>Зняття вій іншого майстра <b>+100 грн</b></span><span>Зняття вій Юлії <b>безкоштовно</b></span></div>
+<p class="note reveal">Фінальну вартість майстер підтверджує перед записом.</p>
+</section>
+
+<section class="sec wrap" id="catalog">
+<h2 class="reveal">Приклади робіт</h2>
+<p class="sub reveal">Натисніть на фото, щоб розглянути ближче.</p>
+<div class="grid"><button class="tile tall" style="--d:9s" data-g="images/catalog/work-01.jpg" aria-label="Відкрити фото: Класика / 2D"><img src="images/catalog/work-01.jpg" alt="Нарощення вій Класика / 2D у Рівному — робота Юлії" loading="lazy" width="800" height="1000"><img src="images/catalog/work-08.jpg" alt="" loading="lazy" width="800" height="1000"><span>Класика / 2D</span></button><button class="tile " style="--d:10s" data-g="images/catalog/work-02.jpg" aria-label="Відкрити фото: 3D"><img src="images/catalog/work-02.jpg" alt="Нарощення вій 3D у Рівному — робота Юлії" loading="lazy" width="800" height="1000"><img src="images/catalog/work-09.jpg" alt="" loading="lazy" width="800" height="1000"><span>3D</span></button><button class="tile " style="--d:11s" data-g="images/catalog/work-03.jpg" aria-label="Відкрити фото: 4D"><img src="images/catalog/work-03.jpg" alt="Нарощення вій 4D у Рівному — робота Юлії" loading="lazy" width="800" height="1000"><img src="images/catalog/work-10.jpg" alt="" loading="lazy" width="800" height="1000"><span>4D</span></button><button class="tile tall" style="--d:12s" data-g="images/catalog/work-04.jpg" aria-label="Відкрити фото: 5D"><img src="images/catalog/work-04.jpg" alt="Нарощення вій 5D у Рівному — робота Юлії" loading="lazy" width="800" height="1000"><img src="images/catalog/work-11.jpg" alt="" loading="lazy" width="800" height="1000"><span>5D</span></button><button class="tile " style="--d:9s" data-g="images/catalog/work-05.jpg" aria-label="Відкрити фото: Мокрий ефект"><img src="images/catalog/work-05.jpg" alt="Нарощення вій Мокрий ефект у Рівному — робота Юлії" loading="lazy" width="800" height="1000"><img src="images/catalog/work-12.jpg" alt="" loading="lazy" width="800" height="1000"><span>Мокрий ефект</span></button><button class="tile " style="--d:10s" data-g="images/catalog/work-06.jpg" aria-label="Відкрити фото: 2D"><img src="images/catalog/work-06.jpg" alt="Нарощення вій 2D у Рівному — робота Юлії" loading="lazy" width="800" height="1000"><img src="images/catalog/work-13.jpg" alt="" loading="lazy" width="800" height="1000"><span>2D</span></button><button class="tile " style="--d:11s" data-g="images/catalog/work-07.jpg" aria-label="Відкрити фото: Класика"><img src="images/catalog/work-07.jpg" alt="Нарощення вій Класика у Рівному — робота Юлії" loading="lazy" width="800" height="1000"><img src="images/catalog/work-14.jpg" alt="" loading="lazy" width="800" height="1000"><span>Класика</span></button><button class="tile " style="--d:12s" data-g="images/catalog/work-08.jpg" aria-label="Відкрити фото: 3D"><img src="images/catalog/work-08.jpg" alt="Нарощення вій 3D у Рівному — робота Юлії" loading="lazy" width="800" height="1000"><img src="images/catalog/work-01.jpg" alt="" loading="lazy" width="800" height="1000"><span>3D</span></button></div><i hidden data-g="images/catalog/work-09.jpg"></i><i hidden data-g="images/catalog/work-10.jpg"></i><i hidden data-g="images/catalog/work-11.jpg"></i><i hidden data-g="images/catalog/work-12.jpg"></i><i hidden data-g="images/catalog/work-13.jpg"></i><i hidden data-g="images/catalog/work-14.jpg"></i>
+<p class="more"><a class="btn ghost magnetic" href="https://www.instagram.com/lashmaker_julia?igsh=aXppcG93MXJpdjR1&igsi=aXppcG93MXJpdjR1" target="_blank" rel="noopener">Більше робіт в Instagram</a></p>
+</section>
+
+<section class="sec wrap" id="why">
+<h2 class="reveal">Досвід, який відчувається</h2>
+<div class="why">
+<article class="reveal"><h3>Досвід і техніка</h3><p>7 років практики — відточене накладання, акуратна ізоляція вій і комфорт навіть при чутливих очах.</p></article>
+<article class="reveal"><h3>Дбайливий підхід</h3><p>Клей і вії підбираються індивідуально з урахуванням стану ваших власних вій.</p></article>
+<article class="reveal"><h3>Підтримка після процедури</h3><p>Юлія пояснює правила догляду, щоб результат тримався якнайдовше.</p></article>
+</div>
+</section>
+
+<section class="sec wrap faq" id="faq">
+<h2 class="reveal">Часті питання</h2>
+<details class="reveal"><summary>Скільки коштує нарощення вій у Рівному?</summary><p>У Юлії класика коштує 550 грн, 2D — 600 грн, 3D — 650 грн, 4D та мокрий ефект — по 700 грн, 5D — 750 грн. Промінчики — +50 грн. Остаточну вартість майстер підтверджує перед записом.</p></details><details class="reveal"><summary>Чим відрізняються 2D, 3D, 4D і 5D?</summary><p>Цифра — це кількість тонких вій у пучку на одну натуральну. 2D дає легкий об'єм, 3D — збалансований, 4D — насичений, 5D — максимально густий ефект. Класика — одна вія на одну натуральну.</p></details><details class="reveal"><summary>Скільки коштує зняття вій?</summary><p>Зняття вій Юлії — безкоштовно при повторному нарощенні. Зняття вій іншого майстра — 100 грн.</p></details><details class="reveal"><summary>Як записатися на нарощення вій у Рівному?</summary><p>Напишіть Юлії в Telegram, Instagram або Viber чи зателефонуйте за номером +380 97 514 16 25 — вона підбере зручний час.</p></details>
+</section>
+
+<section class="wrap" id="contacts">
+<div class="cta reveal">
+<h2>Готові до нового погляду?</h2>
+<p>Напишіть у зручний месенджер або зателефонуйте — Юлія підбере час у Рівному й відповість на всі запитання.</p>
+<div class="ccs"><a class="cc magnetic" href="https://t.me/yulka981025" target=_blank rel=noopener><span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 3.9 2.6 11.3c-1 .4-1 1.5.1 1.8l4.7 1.5 1.8 5.7c.3.9 1.4 1 1.9.3l2.6-3.1 4.7 3.5c.8.6 2 .2 2.2-.8l3.2-14.5c.2-1-.8-1.8-1.9-1.8ZM9.1 13.9l8.3-6.6c.3-.2.6.2.3.4l-6.9 7.1-.3 3.1-1.4-4Z"/></svg></span><div><b>Telegram</b>@yulka981025</div></a><a class="cc magnetic" href="https://www.instagram.com/lashmaker_julia?igsh=aXppcG93MXJpdjR1&igsi=aXppcG93MXJpdjR1" target=_blank rel=noopener><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg></span><div><b>Instagram</b>lashmaker_julia</div></a><a class="cc magnetic" href="https://msng.link/o?380975141625=vi" target=_blank rel=noopener><span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6 2 11c0 2.6 1.2 5 3.2 6.7L4 22l4.6-1.5C9.7 20.8 10.8 21 12 21c5.5 0 10-4 10-10S17.5 2 12 2Z"/></svg></span><div><b>Viber</b>+380 97 514 16 25</div></a><a class="cc magnetic" href="tel:+380975141625"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.9 21 3 13.1 3 3.9 3 3.4 3.4 3 4 3h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8Z"/></svg></span><div><b>Телефон</b>+380 97 514 16 25</div></a></div>
+</div>
+</section>
+</main>
+<footer class="wrap"><div class="ft"><img src="images/brand/logo-circle.png" alt="" width="48" height="48"><p>Юлія Lashmaker — нарощення вій у Рівному. <a href="tel:+380975141625">+380 97 514 16 25</a></p><div class="soc"><a href="https://t.me/yulka981025" target="_blank" rel="noopener" aria-label="Telegram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 3.9 2.6 11.3c-1 .4-1 1.5.1 1.8l4.7 1.5 1.8 5.7c.3.9 1.4 1 1.9.3l2.6-3.1 4.7 3.5c.8.6 2 .2 2.2-.8l3.2-14.5c.2-1-.8-1.8-1.9-1.8ZM9.1 13.9l8.3-6.6c.3-.2.6.2.3.4l-6.9 7.1-.3 3.1-1.4-4Z"/></svg></a><a href="https://www.instagram.com/lashmaker_julia?igsh=aXppcG93MXJpdjR1&igsi=aXppcG93MXJpdjR1" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg></a><a href="https://msng.link/o?380975141625=vi" target="_blank" rel="noopener" aria-label="Viber"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6 2 11c0 2.6 1.2 5 3.2 6.7L4 22l4.6-1.5C9.7 20.8 10.8 21 12 21c5.5 0 10-4 10-10S17.5 2 12 2Z"/></svg></a></div></div><small>© <span id="year">2026</span> Юлія Lashmaker. Усі права захищені.</small></footer>
+<a class="fab magnetic" href="tel:+380975141625" aria-label="Подзвонити"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.9 21 3 13.1 3 3.9 3 3.4 3.4 3 4 3h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8Z"/></svg></a>
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Перегляд фото" hidden><button id="lx" aria-label="Закрити">✕</button><button id="lp" aria-label="Попереднє">‹</button><img id="li" alt="Робота Юлії — нарощення вій"><button id="ln" aria-label="Наступне">›</button></div>
+<script src="js/script.js" defer></script>
+</body>
+</html>
